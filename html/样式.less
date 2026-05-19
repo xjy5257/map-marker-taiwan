@@ -106,6 +106,9 @@ a{
     justify-content: center;
     min-width: 0;
 }
+.地图缩放{
+    display: contents;
+}
 #地区.map-container{
     --cell: 80px;
     --island: 40px;
@@ -308,45 +311,63 @@ footer{
         overflow-y: auto;
         height: auto;
         min-height: 100%;
+        -webkit-overflow-scrolling: touch;
     }
     #舞台{
         height: auto;
-        min-height: 100vh;
+        min-height: 100dvh;
         overflow: visible;
-        padding: 10px 10px 88px;
+        padding: 8px 8px calc(80px + env(safe-area-inset-bottom, 0));
     }
     .页头{
         margin-bottom: 4px;
-        h1{font-size: 32px;}
-        .副标题{font-size: 16px;}
+        h1{font-size: 28px;}
+        .副标题{font-size: 14px;}
+        .开发者{font-size: 11px;}
     }
     .主栏{
+        flex: none;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
+        min-height: auto;
+        width: 100%;
+        overflow: visible;
     }
     .地图外壳{
-        order: 1;
         width: 100%;
         flex: none;
+        min-height: auto;
+        display: flex;
         justify-content: center;
+        align-items: flex-start;
+        overflow: visible;
+    }
+    .地图缩放{
+        display: flex;
+        justify-content: center;
+        transform-origin: top center;
     }
     .侧栏{
-        order: 2;
         width: 100%;
-        max-width: 400px;
+        max-width: 360px;
         align-self: center;
         margin-bottom: 0;
+        flex-shrink: 0;
     }
-    #分数{font-size: 36px;margin-bottom: 8px;}
-    #金句{font-size: 14px;margin-top: 10px;}
+    #分数{font-size: 32px;margin-bottom: 8px;}
+    #金句{font-size: 13px;margin-top: 8px;}
+    #等级.图例 span{
+        min-width: 58px;
+        font-size: 10px;
+        height: 18px;
+    }
     #地区.map-container{
-        --island: 32px;
-        --cell: calc((100vw - 24px - var(--island)) / 4);
-        width: calc(var(--island) + var(--cell) * 4);
-        max-width: 100%;
+        --island: 28px;
+        --cell: 36px;
+        flex-shrink: 0;
         .县市{
-            font-size: clamp(10px, 2.8vw, 14px);
+            font-size: 12px;
             border-width: 2px;
         }
         .县市[data-area="xinbei"],
@@ -354,14 +375,20 @@ footer{
         .县市[data-area="nantou"],
         .县市[data-area="gaoxiong"],
         .县市[data-area="taidong"]{
-            font-size: clamp(11px, 3.2vw, 16px);
+            font-size: 13px;
+        }
+        .县市[data-area="zhushi"],
+        .县市[data-area="jiashi"],
+        .县市[data-area="mazu"],
+        .县市[data-area="jinmen"],
+        .县市[data-area="penghu"]{
+            font-size: 10px;
         }
         .县市[data-area="mazu"],
         .县市[data-area="jinmen"],
         .县市[data-area="penghu"]{
             width: var(--island);
             height: var(--island);
-            font-size: clamp(9px, 2.4vw, 11px);
             border-width: 2px;
         }
     }

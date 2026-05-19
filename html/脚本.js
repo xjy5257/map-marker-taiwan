@@ -174,16 +174,18 @@ const 生成舞台HTML = () => {
 		'<p class="开发者">Developer: JY腦洞自留地</p>',
 		'</header>',
 		'<div class="主栏">',
+		'<div class="地图外壳">',
+		'<div class="地图缩放">',
+		'<div id="地区" class="map-container">',
+		生成地图HTML(),
+		'</div>',
+		'</div>',
+		'</div>',
 		'<aside class="侧栏">',
 		'<div id="分数">分数</div>',
 		`<div id="等级" class="图例">${图例HTML}</div>`,
 		'<p id="金句">地圖上的疆域是有限的，而靈魂的流浪從未有過邊界</p>',
 		'</aside>',
-		'<div class="地图外壳">',
-		'<div id="地区" class="map-container">',
-		生成地图HTML(),
-		'</div>',
-		'</div>',
 		'</div>',
 		'</div>',
 	].join('\n');
@@ -205,6 +207,42 @@ const 上下文 = 画板.getContext(面);
 const 舞台 = $('#舞台');
 const 地区 = $('#地区');
 const 分数 = $('#分数');
+const 窄屏断点 = 900;
+
+const 适配手机地图 = () => {
+	const 外壳 = 舞台 && $('.地图外壳', 舞台);
+	const 缩放层 = 外壳 && $('.地图缩放', 外壳);
+	if (!缩放层 || !地区 || !外壳) return;
+
+	缩放层[样式].transform = '';
+	缩放层[样式].width = '';
+	外壳[样式].height = '';
+
+	if (视窗.innerWidth > 窄屏断点) return;
+
+	const 地图宽 = 地区.offsetWidth;
+	const 地图高 = 地区.offsetHeight;
+	if (!地图宽 || !地图高) return;
+
+	const 页头 = $('.页头', 舞台);
+	const 页头高 = 页头 ? 页头.offsetHeight : 72;
+	const 底栏 = 96;
+	const 可用宽 = 视窗.innerWidth - 16;
+	const 可用高 = 视窗.innerHeight - 页头高 - 底栏 - 16;
+	const 比例 = Math.min(1, 可用宽 / 地图宽, 可用高 / 地图高);
+
+	if (比例 < 0.995) {
+		缩放层[样式].transform = `scale(${比例})`;
+		缩放层[样式].transformOrigin = 'top center';
+		缩放层[样式].width = 地图宽 + 像素;
+		外壳[样式].height = 数学.ceil(地图高 * 比例) + 像素;
+	}
+};
+
+添加事件监控(视窗, 'resize', 适配手机地图);
+添加事件监控(视窗, 'orientationchange', () => 设置延时(适配手机地图, 150));
+设置延时(适配手机地图, 0);
+设置延时(适配手机地图, 500);
 const 弹窗地区名 = $('#弹窗地区名');
 const 关闭设置等级 = $('#关闭设置等级');
 const 弹窗选项们 = [...设置等级.querySelectorAll('.弹窗选项 [data-level]')];
