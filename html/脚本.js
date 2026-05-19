@@ -226,7 +226,7 @@ const 适配手机地图 = () => {
 
 	const 页头 = $('.页头', 舞台);
 	const 页头高 = 页头 ? 页头.offsetHeight : 72;
-	const 底栏 = 96;
+	const 底栏 = 24;
 	const 可用宽 = 视窗.innerWidth - 16;
 	const 可用高 = 视窗.innerHeight - 页头高 - 底栏 - 16;
 	const 比例 = Math.min(1, 可用宽 / 地图宽, 可用高 / 地图高);
