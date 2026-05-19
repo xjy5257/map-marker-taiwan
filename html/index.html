@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" data-loading>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>台灣制霸生成器 - 全台縣市大解鎖</title>
+	<meta name="description" content="全台縣市大解鎖，你的台灣足跡得幾分？台灣二十二縣市制霸標記生成工具">
+	<meta name="keywords" content="台灣製霸,縣市制霸,JY腦洞自留地">
+	<link rel="stylesheet" href="样式.css?v={version}">
+	<style>
+		#设置等级{
+			display:none;
+			position:fixed;
+			z-index:1000;
+			left:0;
+			top:0;
+			width:200px;
+			background:#fff;
+			border-radius:12px;
+			box-shadow:0 8px 32px rgba(0,0,0,.18);
+			border:1px solid rgba(0,0,0,.08);
+			overflow:hidden;
+			font:16px/1.4 'PingFang SC','Microsoft YaHei',sans-serif;
+		}
+		#设置等级.显示{display:block}
+		footer{
+			position:fixed;
+			z-index:100;
+			right:0;
+			bottom:0;
+			margin:20px;
+			pointer-events:auto;
+		}
+	</style>
+</head>
+<body>
+<div id="设置等级" role="dialog" aria-modal="true">
+	<div class="弹窗头">
+		<h2 id="弹窗地区名">地区</h2>
+		<button type="button" id="关闭设置等级" class="弹窗关闭" aria-label="关闭">×</button>
+	</div>
+	<div class="弹窗选项">
+		<a data-level="5">居住</a>
+		<a data-level="4">短居</a>
+		<a data-level="3">游玩</a>
+		<a data-level="2">出差</a>
+		<a data-level="1">路过</a>
+		<a data-level="0">没去过</a>
+	</div>
+</div>
+<footer>
+	<a href="https://lab.magiconch.com" target="_blank">lab</a>
+	<a href="https://github.com/itorr/china-ex" target="_blank">GitHub</a>
+	<a id="保存" class="按钮">保存成图片</a>
+</footer>
+<div id="输出" style="display: none;">
+	<div>
+		<img>
+	</div>
+	<p>
+		手机端可长按图片
+		<b>“添加到照片”</b>
+	</p>
+	<div>
+		<a class="按钮">关闭</a>
+	</div>
+</div>
+<script src="脚本.js?v={version}"></script>
+</body>
+</html>
