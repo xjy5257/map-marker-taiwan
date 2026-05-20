@@ -1,9 +1,7 @@
 ![中国台湾地区制霸生成器](<img width="453" height="615" alt="image" src="https://github.com/user-attachments/assets/96e2b851-3f37-4d26-92f9-03cb796466f5" />)
-# 中国制霸生成器
-中国三十四省级行政区域制霸标记生成工具
+# 中国台湾地区制霸生成器
+全台22个显示足迹打卡
 (https://xjy5257.github.io/map-marker-taiwan/)
-
-## [全球版在这里！🤗](https://github.com/itorr/world-ex)
 
 ## 功能
 可以在线标记 居住、短居、游玩、出差、路过 标记后可生成图片进行社区分享
